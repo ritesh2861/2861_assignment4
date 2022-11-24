@@ -1,0 +1,105 @@
+#include<iostream>
+#include<string.h>
+#include<math.h>
+using namespace std;
+float find_area(float j);
+float find_area(float j,float k);
+float find_area(float j,float  k, float l);
+
+class student{
+	private:
+	char name[30];
+	int rollno;
+	char section;
+	public: 
+	void show(){
+		cout<<"enter name of student :";
+		cin.getline(name,30);
+		cout<<"enter the roll no :";
+		cin>>rollno;
+		cout<<"enter section of student :";
+		cin>>section;
+	}
+
+    void print()
+    {
+        cout<<"name:";
+        puts (name);
+        cout<<"roll:";
+        cout<<rollno<<endl;
+        cout<<"section:";
+        cout<<section<<endl;
+    }
+		
+};
+
+class test: public student{
+	private:
+		int marks[];
+		public:
+		int store(){
+			cout<<"enter marks of 5 subjects of student :"<<endl;
+			for(int i=0;i<5;i++){
+				cin>>marks[i];
+			}
+		cout<<"the marks of student in five subject are :"<<endl;
+			for(int i=0;i<5;i++){
+				cout<<marks[i]<<"\n";
+			}
+		}
+		
+};
+
+class op{
+	public:
+	int k,y,a,b;
+	op(int a,int b){
+		k=a;
+		y=b;
+	}
+	void operator+(){
+		k=a+b;
+		y++;
+	}
+	void display()
+	{
+		cout<<"\nOVELOADING DIMENSIONS\n";
+		cout<<"\nx:"<<k;
+		cout<<"\ny:"<<y<<endl;
+	}
+};
+
+
+int main ()
+{
+    float a,b,c;
+    student s1;
+	test t1;
+	s1.show();
+	t1.store();
+    s1.print();
+    cout<<"enter the dimension of shapes:"<<endl;
+    cin>>a>>b>>c;
+    cout<<"area of circle :"<<find_area(a)<<endl;
+    cout<<"area of rectangle :"<<find_area(a,b)<<endl;
+    cout<<"area of triangle :"<<find_area(a,b,c)<<endl;
+	cout<<"\n";
+    op p(4,5);
+	+p;
+	p.display();
+	return 0;
+}
+float find_area(float a)
+{
+    return (3.14*a*a);
+}
+float find_area(float a,float b)
+{
+    return(a*b);
+}
+float find_area(float a,float b,float c)
+{
+    int q=(a+b+c)/2;
+	int A=sqrt(q*(q-a)*(q-b)*(q-c));
+	return A;
+}
